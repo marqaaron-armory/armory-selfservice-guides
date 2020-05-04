@@ -1,0 +1,1 @@
+This is a just a placeholder document for the directory.

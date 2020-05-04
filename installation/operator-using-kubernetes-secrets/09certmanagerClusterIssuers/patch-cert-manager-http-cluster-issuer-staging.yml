@@ -1,0 +1,9 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+spec:
+  acme:
+    # Email address used for ACME registration.  This is required and must be changed to a valid email address
+    # so that Let's Encrypt can send notifications about expiring certificates and issues with the account.
+    email: john.doe@example.com

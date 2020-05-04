@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: ingress-nginx
+images:
+  - name: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
+    newTag: 0.30.0
+resources:
+
+  # AWS Network LoadBalancer without TLS Termination (Compatible with Version >= 0.31.0)
+  #- base-aws-nlb-no-tls-termination.yml
+
+  # GCE-GKE LoadBalancer (Compatible with Version >= 0.31.0)
+  #- base-gce-gke.yml
+
+  # Azure LoadBalancer (Compatible with Version >= 0.31.0)
+  #- base-azure.yml
+
+  # Digital Ocean LoadBalancer (Compatible with Version >= 0.31.0)
+  #- base-digital-ocean.yml
+
+  # Linode LoadBalancer (Requires newTag: 0.30.0 since this manifest is incompatible with Versions >= 0.31.0)
+  # Optional Patch Below for Additional Annotations.
+  - base-linode.yml
+
+  # Bare Metal NodePort (Compatible with Version >= 0.31.0)
+  #- base-bare-metal.yml
+
+patchesStrategicMerge:
+
+  # Use this patch file to assign the deployment to a specific Node
+  - patch-deployment-node-selector.yml
+
+  # Linode LoadBalancer (Optional Annotation Edits)
+  - patch-linode.yml

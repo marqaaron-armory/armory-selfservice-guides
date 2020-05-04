@@ -1,0 +1,54 @@
+apiVersion: spinnaker.armory.io/v1alpha2
+kind: SpinnakerService
+metadata:
+  name: spinnaker
+spec:
+  # spec.spinnakerConfig - This section is how to specify configuration spinnaker
+  spinnakerConfig:
+    # spec.spinnakerConfig.service-settings - This section contains the YAML of the service's service-setting
+    # see https://www.spinnaker.io/reference/halyard/custom/#tweakable-service-settings for available settings
+    service-settings:
+      clouddriver:
+        kubernetes:
+          nodeSelector:
+            appGrouping: spinB
+        deck:
+          kubernetes:
+            nodeSelector:
+              appGrouping: spinA
+        echo:
+          kubernetes:
+            nodeSelector:
+              appGrouping: spinB
+        fiat:
+          kubernetes:
+            nodeSelector:
+              appGrouping: spinA
+        front50:
+          kubernetes:
+            nodeSelector:
+              appGrouping: spinB
+        gate:
+          kubernetes:
+            nodeSelector:
+              appGrouping: spinA
+        igor:
+          kubernetes:
+            nodeSelector:
+              appGrouping: spinA
+        kayenta:
+          kubernetes:
+            nodeSelector:
+              appGrouping: spinA
+        orca:
+          kubernetes:
+            nodeSelector:
+              appGrouping: spinB
+        rosco:
+          kubernetes:
+            nodeSelector:
+              appGrouping: spinA
+        redis:
+          kubernetes:
+            nodeSelector:
+              appGrouping: spinB

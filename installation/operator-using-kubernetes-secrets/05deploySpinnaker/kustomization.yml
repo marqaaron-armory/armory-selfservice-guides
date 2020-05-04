@@ -1,0 +1,23 @@
+namespace: spinnaker-system
+
+resources:
+  - base-spinnaker-service.yml
+
+# Apply the patches top down order
+patches:
+  - path: patch-config.yml
+    target:
+      version: v1alpha2
+      kind: SpinnakerService
+  - path: patch-profiles.yml
+    target:
+      version: v1alpha2
+      kind: SpinnakerService
+  - path: patch-files.yml
+    target:
+      version: v1alpha2
+      kind: SpinnakerService
+  - path: patch-service-settings.yml
+    target:
+      version: v1alpha2
+      kind: SpinnakerService

@@ -1,0 +1,72 @@
+apiVersion: spinnaker.armory.io/v1alpha2
+kind: SpinnakerService
+metadata:
+  name: spinnaker
+spec:
+  # spec.spinnakerConfig - This section is how to specify configuration spinnaker
+  spinnakerConfig:
+    # spec.spinnakerConfig.config - This section contains the contents of a deployment found in a halconfig .deploymentConfigurations[0]
+    config:
+      version: 2.19.8  # the version of Spinnaker to be deployed
+      persistentStorage:
+        persistentStoreType: s3
+        s3:
+          bucket: armory-spinnaker-operator-bucket
+          rootFolder: front50
+          region: us-east-2
+          pathStyleAccess: false
+          accessKeyId: 1QAZ1QAZ1QAZ1QAZ1QAZ1QAZ
+          secretAccessKey: encrypted:k8s!n:spin-secrets!k:awsSecretAccessKey
+      providers:
+        kubernetes:
+          enabled: true
+          accounts:
+            - name: spinnaker
+              requiredGroupMembership: []
+              providerVersion: V2
+              permissions:
+                READ:
+                  - spin-admin
+                  - spin-ops
+                  - spin-qa
+                  - spin-dev
+                WRITE:
+                  - spin-admin
+                  - spin-ops
+              dockerRegistries: []
+              configureImagePullSecrets: true
+              cacheThreads: 1
+              namespaces: []
+              omitNamespaces: []
+              kinds: []
+              omitKinds: []
+              customResources: []
+              cachingPolicies: []
+              kubeconfigFile: encryptedFile:k8s!n:spin-secrets!k:kubeconfig
+              oAuthScopes: []
+              onlySpinnakerManaged: true
+          primaryAccount: linode
+      features:
+        artifacts: true
+      security:
+        apiSecurity:
+          ssl:
+            enabled: false
+          overrideBaseUrl: https://api.spinnaker.armory.io
+        uiSecurity:
+          ssl:
+            enabled: false
+          overrideBaseUrl: https://spinnaker.armory.io
+        authn:
+          saml:
+            enabled: true
+            metadataLocal: encryptedFile:k8s!n:spin-secrets!k:metadata.xml
+            issuerId: encrypted:k8s!n:spin-secrets!k:samlIssuerId
+            keyStorePassword: encrypted:k8s!n:spin-secrets!k:samlJksPassword
+            keyStoreAliasName: encrypted:k8s!n:spin-secrets!k:samlJksAlias
+            keyStore: encryptedFile:k8s!n:spin-secrets!k:samlkeystore.jks
+            serviceAddress: https://api.spinnaker.armory.io
+          enabled: true
+        authz:
+          enabled: true
+

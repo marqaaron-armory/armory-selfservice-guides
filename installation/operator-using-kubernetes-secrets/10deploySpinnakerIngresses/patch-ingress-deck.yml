@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: spinnaker-deck-nginx-ingress
+spec:
+  rules:
+    - host: spinnaker.armory.io
+      http:
+        paths:
+          - backend:
+              serviceName: spin-deck
+              servicePort: 9000
+            path: /
+  tls:
+    - hosts:
+        - spinnaker.armory.io
+      secretName: spinnaker-deck-nginx-ingress-tls

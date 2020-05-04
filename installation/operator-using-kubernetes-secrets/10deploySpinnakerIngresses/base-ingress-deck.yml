@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: spinnaker-deck-nginx-ingress
+  labels:
+    app: spin
+    cluster: spin-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    app.kubernetes.io/name: spin
+    app.kubernetes.io/managed-by: spinnaker
+    moniker.spinnaker.io/application: spin
+    moniker.spinnaker.io/cluster: spin-ingress
+spec:
+  rules: []
+  tls: []

@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-nginx-controller
+  annotations:
+
+    # Client Connection Throttle. This limits the number of new connections-per-second from the same client IP. Max 20. 0 Disables.
+    service.beta.kubernetes.io/linode-loadbalancer-throttle: "0"
+
+    # The type of health check to perform on Nodes to ensure that they are serving requests.
+    # Connection checks for a valid TCP handshake, http checks for a 2xx or 3xx response code,
+    # http_body checks for a certain string within the response body of the healthcheck URL.
+    service.beta.kubernetes.io/linode-loadbalancer-check-type: "connection"
+
+    # The duration, in seconds, between health checks.
+    service.beta.kubernetes.io/linode-loadbalancer-check-interval: "10"
+
+    # Duration, in seconds, to wait for a health check to succeed before it is considered a failure. Max 30
+    service.beta.kubernetes.io/linode-loadbalancer-check-timeout: "5"
+
+    # Number of health checks to perform before removing a back-end Node from service. Max 30
+    service.beta.kubernetes.io/linode-loadbalancer-check-attempts: "4"
+
+spec:
+  sessionAffinity: None
+
+  # sessionAffinity: ClientIP
+  # sessionAffinityConfig:
+  #   clientIP:
+  #     timeoutSeconds: 100

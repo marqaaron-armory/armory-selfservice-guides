@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: spinnaker-gate-nginx-ingress
+spec:
+  rules:
+    - host: api.spinnaker.armory.io
+      http:
+        paths:
+          - backend:
+              serviceName: spin-gate
+              servicePort: 8084
+            path: /
+  tls:
+    - hosts:
+        - api.spinnaker.armory.io
+      secretName: spinnaker-gate-nginx-ingress-tls

@@ -1,0 +1,32 @@
+# Source: cert-manager/templates/cainjector-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cert-manager-cainjector
+spec:
+  template:
+    spec:
+      nodeSelector:
+        appGrouping: spinSupport
+---
+# Source: cert-manager/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cert-manager
+spec:
+  template:
+    spec:
+      nodeSelector:
+        appGrouping: spinSupport
+---
+# Source: cert-manager/templates/webhook-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cert-manager-webhook
+spec:
+  template:
+    spec:
+      nodeSelector:
+        appGrouping: spinSupport
