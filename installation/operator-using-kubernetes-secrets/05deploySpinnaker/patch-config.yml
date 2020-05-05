@@ -45,7 +45,7 @@ spec:
               kubeconfigFile: encryptedFile:k8s!n:spin-secrets!k:kubeconfig
               oAuthScopes: []
               onlySpinnakerManaged: true
-          primaryAccount: linode
+          primaryAccount: spinnaker
       features:
         artifacts: true
       security:

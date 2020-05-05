@@ -224,7 +224,7 @@ NOTE:  All three files should be located in the installation/.secret directory
 
 Move into the .secret directory
 ```text
-cd .secret
+cd .secrets
 ```
 Declare String Literals as Environment Variables (Substitute Your Own Values!)
 ```text
@@ -321,6 +321,12 @@ To deploy the manifests into your cluster you will use the following command str
 ```text
 kustomize build <<directory-name>> | kubectl deploy -f -
 ```
+
+Verify that the manifests have stabilized and that both containers in the Spinnaker Operator Pod are Running and Ready.
+```text
+kcspin get pods -A
+```
+
 [Kustomize Reference Documents](https://github.com/kubernetes-sigs/kustomize)
 
 ---
@@ -351,6 +357,12 @@ Now install Spinnaker.
 ```text
 kustomize build 05deploySpinnaker/ | kcspin apply -f -
 ```
+
+Verify that the manifests have stabilized and that all Spinnaker Pods are Running and Ready.
+```text
+kcspin get pods -A
+```
+
 [Armory Spinnaker Operator Reference](https://docs.armory.io/operator_reference/operator-config/)
 
 [OSS Spinnaker Halyard Reference](https://www.spinnaker.io/reference/halyard/)
@@ -411,7 +423,7 @@ Cert Manager requires its Custom Resource Definitions to be installed.
 
 These manifests must be installed as is and shouldn't be customized.
 ```text
-kcspin apply -k 08certmanagerResouces/
+kcspin apply -k 08certmanagerResources/
 ```
 
 Prior to moving forward, verify that all the three pods deployed by these manifests are running and ready using the following:

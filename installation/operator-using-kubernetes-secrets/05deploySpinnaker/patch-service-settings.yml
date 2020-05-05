@@ -12,43 +12,43 @@ spec:
         kubernetes:
           nodeSelector:
             appGrouping: spinB
-        deck:
-          kubernetes:
-            nodeSelector:
-              appGrouping: spinA
-        echo:
-          kubernetes:
-            nodeSelector:
-              appGrouping: spinB
-        fiat:
-          kubernetes:
-            nodeSelector:
-              appGrouping: spinA
-        front50:
-          kubernetes:
-            nodeSelector:
-              appGrouping: spinB
-        gate:
-          kubernetes:
-            nodeSelector:
-              appGrouping: spinA
-        igor:
-          kubernetes:
-            nodeSelector:
-              appGrouping: spinA
-        kayenta:
-          kubernetes:
-            nodeSelector:
-              appGrouping: spinA
-        orca:
-          kubernetes:
-            nodeSelector:
-              appGrouping: spinB
-        rosco:
-          kubernetes:
-            nodeSelector:
-              appGrouping: spinA
-        redis:
-          kubernetes:
-            nodeSelector:
-              appGrouping: spinB
+      deck:
+        kubernetes:
+          nodeSelector:
+            appGrouping: spinA
+      echo:
+        kubernetes:
+          nodeSelector:
+            appGrouping: spinB
+      fiat:
+        kubernetes:
+          nodeSelector:
+            appGrouping: spinA
+      front50:
+        kubernetes:
+          nodeSelector:
+            appGrouping: spinB
+      gate:
+        kubernetes:
+          nodeSelector:
+            appGrouping: spinA
+      igor:
+        kubernetes:
+          nodeSelector:
+            appGrouping: spinA
+      kayenta:
+        kubernetes:
+          nodeSelector:
+            appGrouping: spinA
+      orca:
+        kubernetes:
+          nodeSelector:
+            appGrouping: spinB
+      rosco:
+        kubernetes:
+          nodeSelector:
+            appGrouping: spinA
+      redis:
+        kubernetes:
+          nodeSelector:
+            appGrouping: spinB
