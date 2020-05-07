@@ -60,7 +60,7 @@ This installation guide assumes you have already completed the following:
 ## Resulting Kubernetes Architecture
 
 
-![Reference Architecture](.images/kubernetes-reference-architecture-install-with-operator-using-kubernetes-secrets.jpg)
+![Reference Architecture](.images/20200507-install-using-operator-kubernetes-secrets-reference-architecture.png)
 
 
 ---
